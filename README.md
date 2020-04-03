@@ -8,6 +8,12 @@ See an example below:
 
 ![TEST](figs/file.png)
 
+## How to get it
+From now you can simply pip it:
+```python
+pip install instantlog
+```
+
 ## Usage
 Minimal example for use:
 ```python
