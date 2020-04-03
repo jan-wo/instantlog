@@ -7,7 +7,7 @@ from colorama import Fore, Style
 # For coloring:
 colorama.init()
 
-class SimpLog():
+class InstantLog():
     """
     This is very simple logger functionality. Be aware that YELLOW color is
     bugged in windows PowerShell. In Command Prompt colors works fine. This
