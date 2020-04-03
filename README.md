@@ -4,9 +4,9 @@ Date/time information is provided in every log in a file but not printed in the 
 
 See an example below:
 
-![TEST](figs/simplog.png)
+![TEST](figs/console.png)
 
-![TEST](figs/notepadlog.png)
+![TEST](figs/file.png)
 
 ## Usage
 Minimal example for use:
