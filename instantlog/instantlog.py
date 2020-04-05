@@ -50,8 +50,8 @@ class InstantLog():
                 pass
 
         with open(self._file_pth, 'a') as f:
-            msg1 = f'[SETTING INFO] [{now}] :: LOG FILE: {self._file_pth}'
-            msg2 = f'[SETTING INFO] [{now}] :: MODE: {self._mode}'
+            msg1 = f'[LOGGER INFO] [{now}] :: LOG FILE: {self._file_pth}'
+            msg2 = f'[LOGGER INFO] [{now}] :: MODE: {self._mode}'
             f.write(msg1 + '\n' + msg2 + '\n')
 
     def stop(self):
@@ -66,10 +66,7 @@ class InstantLog():
               f' [{now}] ({exec_time:.5f} s)')
 
         with open(self._file_pth, 'a') as f:
-            f.write(f'[LOGGER INFO] [STOP] [{now}] ({exec_time:.5f} s)\n')
-
-
-
+            f.write(f'[LOGGER INFO] [STOP] [{now}] ({exec_time:.5f} s)\n\n')
 
     def now(self):
         """Return recent date-time"""

@@ -15,12 +15,21 @@ pip install instantlog
 ```
 
 ## Usage
-Minimal example for use:
+Minimal example:
 ```python
 from instantlog import InstantLog
 log = InstantLog()
 log.i("This is test info msg", True)
 ```
+To see execution time at the end, use stop() method:
+Minimal example:
+```python
+from instantlog import InstantLog
+log = InstantLog()
+log.w("This warning is will not appear in file")
+log.stop() # put this in the last line of your code
+```
+
 #### Init parameters:
 All of the following parameters are optional:
 * `name=None` (str) -- additional pair of square bracket info. Putting the `__file__` as `name` gives info about which module is actually logging. 
