@@ -32,12 +32,14 @@ class InstantLog():
         """
 
         # Inform user about initialization:
-        now = strftime("%Y-%m-%d %H:%M:%S", gmtime())
-        print(f'\n{Fore.GREEN}[SETTING INFO]{Style.RESET_ALL} [START] [{now}]')
+        now = self.now()
+        print(f'\n{Fore.GREEN}[LOGGER INFO]{Style.RESET_ALL} [START]'
+              f' [{now}]')
 
         self._name = name
         self._file_pth = file_pth
         self._mode = "Append"
+        self._start_time = time.time()
 
         # Remove existing log file before creating new if append=False.
         if not append:
@@ -51,6 +53,21 @@ class InstantLog():
             msg1 = f'[SETTING INFO] [{now}] :: LOG FILE: {self._file_pth}'
             msg2 = f'[SETTING INFO] [{now}] :: MODE: {self._mode}'
             f.write(msg1 + '\n' + msg2 + '\n')
+
+    def stop(self):
+        """
+        Print ending message, also print time passed since running init.
+        The same message is also written to file.
+        """
+        now = self.now()
+        exec_time = time.time() - self._start_time
+
+        print(f'{Fore.GREEN}[LOGGER INFO]{Style.RESET_ALL} [STOP]'
+              f' [{now}] ({exec_time:.5f} s)')
+
+        with open(self._file_pth, 'a') as f:
+            f.write(f'[LOGGER INFO] [STOP] [{now}] ({exec_time:.5f} s)\n')
+
 
 
 
@@ -143,19 +160,21 @@ if __name__ == '__main__':
     """
     import time
     # Long format:
-    lg = SimpLog(__file__, append=False)
-    lg.i("This is test info msg", True)
+    lg = InstantLog(__file__, append=False)
+    lg.i("Waiting 2 sec ...", True)
     time.sleep(2)
     lg.i("This is test info msg", True)
     lg.w("this is warning message", True)
     lg.w("this is warning print-only message")
     lg.e("this is error message", True)
     lg.e("this is error print-only message")
+    lg.stop()
 
     # Short format:
-    lg2 = SimpLog(append=True)
+    lg2 = InstantLog(append=True)
     lg2.i("This is test info msg (2nd instance)", True)
     lg2.w("this is warning message (2nd instance)", True)
     lg2.w("this is warning print-only message (2nd instance)")
     lg2.e("this is error message (2nd instance)", True)
     lg2.e("this is error print-only message (2nd instance)", False)
+    lg2.stop()
