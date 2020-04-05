@@ -1,4 +1,4 @@
-from time import gmtime, strftime
+import time
 import os
 import colorama
 from colorama import Fore, Style
@@ -70,7 +70,7 @@ class InstantLog():
 
     def now(self):
         """Return recent date-time"""
-        return strftime("%Y-%m-%d %H:%M:%S", gmtime())
+        return time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime())
 
     def i(self, msg, to_file=False):
         """
